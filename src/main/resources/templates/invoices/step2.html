@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+{{> common/_navigation }}
 <title>Client Billing Records</title>
 </head>
 <body>
@@ -9,6 +10,9 @@
 
 <form method="post" action="/invoices/create">
 	<input type="text" name="invoiceNumber" placeholder="invoice number" required>
+	{{#error}}
+		<p>Please select at least one billing record</p>
+	{{/error}}
 
 <table>
   <thead>
