@@ -51,7 +51,7 @@ public class InvoiceController {
 		return mv;
 	}
 	
-	@PostMapping("new")
+	@PostMapping("new") 
 	public ModelAndView step2(long clientId) {
 		ModelAndView mv = new ModelAndView("invoices/step2");
 		mv.addObject("clientId", clientId);
@@ -61,7 +61,6 @@ public class InvoiceController {
 	
 	@PostMapping("create")
 	public String createInvoice(Invoice invoice, long clientId, long[] recordIds, Authentication authentication) {
-
 		User creator = (User) authentication.getPrincipal();
 		List<BillingRecord> records = billingRepo.findByIdIn(recordIds);
 		long nowish = Calendar.getInstance().getTimeInMillis();
@@ -84,6 +83,7 @@ public class InvoiceController {
 		invoice.setId(clientId);
 		invoice.setCompany(company);
 		invoiceRepo.save(invoice);
+		
 		return "redirect:/invoices";
 	}
 	

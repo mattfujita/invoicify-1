@@ -10,6 +10,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.theironyard.invoicify.models.User;
+import com.theironyard.invoicify.repositories.BillingRecordRepository;
+import com.theironyard.invoicify.repositories.CompanyRepository;
+import com.theironyard.invoicify.repositories.InvoiceRepository;
 
 public class InvoiceControllerTests {
 	
@@ -22,7 +25,7 @@ public class InvoiceControllerTests {
 		user = new User();
 		authentication = mock(Authentication.class);
 		when(authentication.getPrincipal()).thenReturn(user);
-		controller = new InvoiceController();
+		controller = new InvoiceController(null, null, null);
 	}
 
 	@Test
